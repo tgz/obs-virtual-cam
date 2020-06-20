@@ -32,8 +32,8 @@ DEFINE_GUID(CLSID_OBS_VirtualA,
 
 const AMOVIESETUP_MEDIATYPE AMSMediaTypesV =
 {
-	&MEDIATYPE_Video,
-	&MEDIASUBTYPE_YUY2
+	&MEDIATYPE_Video,  // Major type
+	&MEDIASUBTYPE_YUY2 // Minor type
 };
 
 const AMOVIESETUP_MEDIATYPE AMSMediaTypesA =
@@ -44,15 +44,15 @@ const AMOVIESETUP_MEDIATYPE AMSMediaTypesA =
 
 const AMOVIESETUP_PIN AMSPinV =
 {
-	L"Output",            
-	FALSE,                 
-	TRUE,                  
-	FALSE,                 
-	FALSE,                 
-	&CLSID_NULL,           
-	NULL,                  
-	1,                     
-	&AMSMediaTypesV
+	L"Output",            // Pin string name
+	FALSE,                 // Is it rendered
+	TRUE,                  // Is it an output
+	FALSE,                 // Can we have none
+	FALSE,                 // Can we have many
+	&CLSID_NULL,           // Connects to filter
+	NULL,                  // Connects to pin
+	1,                     // Number of types
+	&AMSMediaTypesV		   // Pin details
 };
 
 const AMOVIESETUP_PIN AMSPinA =
@@ -70,11 +70,11 @@ const AMOVIESETUP_PIN AMSPinA =
 
 const AMOVIESETUP_FILTER AMSFilterV =
 {
-	&CLSID_OBS_VirtualV,  
-	L"OBS Virtual Cam",     
-	MERIT_DO_NOT_USE,      
-	1,                     
-	&AMSPinV
+	&CLSID_OBS_VirtualV,   // Filter CLSID
+	L"OBS Virtual Cam",     // String name
+	MERIT_DO_NOT_USE,      // Filter merit
+	1,                     // Number pins
+	&AMSPinV				// Pin details
 };
 
 const AMOVIESETUP_FILTER AMSFilterV2 =
